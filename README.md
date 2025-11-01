@@ -37,13 +37,13 @@ A comprehensive **C++ Object-Oriented Bank Management System** built for practic
 g++ main.cpp -o main
 main.exe
 
-text
+
 
 ### Compile from Command Line (Linux/macOS):
 g++ main.cpp -o main
 ./main
 
-text
+
 
 ---
 
@@ -103,7 +103,7 @@ Bank-Management-System/
 
 └── .gitignore # (optional) Ignore binaries/output files
 
-text
+
 
 ---
 
@@ -115,7 +115,7 @@ Account No : 213
 Name : saksham
 Type : savings
 Balance : 1500
-text
+
 
 ---
 
@@ -188,4 +188,5 @@ Every answer you need in viva can be pointed to an exact code section from this 
 **Institution:** Poornima Institute of Engineering and Technology (PIET)
 
 ---
+
 
