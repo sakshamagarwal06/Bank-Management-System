@@ -94,9 +94,13 @@ text
 ## Project File Structure
 
 Bank-Management-System/
+
 ├── main.cpp # Full C++ source code
+
 ├── README.md # Project documentation (this file)
+
 ├── accountdata.txt # Output: Formatted, human-readable data cards
+
 └── .gitignore # (optional) Ignore binaries/output files
 
 text
@@ -184,3 +188,4 @@ Every answer you need in viva can be pointed to an exact code section from this 
 **Institution:** Poornima Institute of Engineering and Technology (PIET)
 
 ---
+
