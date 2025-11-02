@@ -154,18 +154,7 @@ Balance : 1500
 - Implement edit/update or delete account (logical deletion with active flag)
 - Add transaction summary/history for each account
 - Allow user authentication (add PIN field)
-- Integrate SQLite/MySQL or web interface
-
----
-
-## Academic Value
-
-**This project is built to fully satisfy undergraduate C++ OOP syllabi, especially for Indian universities** (like PIET). It covers:
-- Class/object, encapsulation, constructor, static, array of objects
-- member/friend functions, operator overloading, inheritance, polymorphism
-- file handling and formatted output
-
-Every answer you need in viva can be pointed to an exact code section from this README.
+- Integrate SQLite/MySQL or web interface
 
 ---
 
