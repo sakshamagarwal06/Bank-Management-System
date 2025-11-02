@@ -154,17 +154,7 @@ Balance : 1500
 - Implement edit/update or delete account (logical deletion with active flag)
 - Add transaction summary/history for each account
 - Allow user authentication (add PIN field)
-- Integrate SQLite/MySQL or web interface
-
----
-
-## Testing Recommendations
-
-1. Register 1, then multiple accounts (check all data fields)
-2. After every account, try deposit, withdraw, skip; confirm balance updates
-3. Open two accounts with same Account No to test duplicate detection (== overload)
-4. Open `accountdata.txt` for formatted output (cards should be clear and readable)
-5. Show summary in terminal matches file for each session
+- Integrate SQLite/MySQL or web interface
 
 ---
 
