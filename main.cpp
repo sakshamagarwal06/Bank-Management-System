@@ -79,7 +79,6 @@ public:
         }
     }
     
-    // Save to file with nice format
     void saveData() {
         ofstream file;
         file.open("accountdata.txt", ios::app);
@@ -141,8 +140,14 @@ int main() {
         acc[i].saveData();
         printNo(acc[i]);
         
-        if (i > 0 && acc[i] == acc[i-1]) {
-            cout << "WARNING: Same account number!\n";
+        // CHECK FOR DUPLICATE - NOW FIXED!
+        bool isDuplicate = false;
+        for (int j = 0; j < i; j++) {
+            if (acc[i] == acc[j]) {
+                isDuplicate = true;
+                cout << "WARNING: Account number already exists!\n";
+                break;
+            }
         }
         
         cout << "Deposit/Withdraw? (d/w/skip): ";
