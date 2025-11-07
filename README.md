@@ -9,13 +9,13 @@ A simple bank system made in C++ where you can create accounts, deposit/withdraw
 g++ main.cpp -o main
 main.exe
 
-text
+
 
 ### Linux/Mac:
 g++ main.cpp -o main
 ./main
 
-text
+
 
 ### Code::Blocks:
 Just open `main.cpp` and press **F9**
