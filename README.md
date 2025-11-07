@@ -80,23 +80,9 @@ Each account is saved like this:
 3. Open `accountdata.txt` to see saved data
 4. Try using same account number twice to see warning
 
-## What I Learned
 
-- How to make classes and use objects
-- Private and public data
-- Using arrays to store many objects
-- Operator overloading
-- File handling in C++
 
-## Things I Could Add Later
-
-- Search for account by number
-- Edit account details
-- Delete account option
-- PIN or password protection
-- Better file format (CSV)
-
-## Notes
+## Note
 
 This is a college project for learning OOP. The code focuses on understanding concepts rather than being a real banking app.
 
@@ -104,4 +90,5 @@ This is a college project for learning OOP. The code focuses on understanding co
 
 **Date:** November 2025  
 **For:** College OOP Assignment
+
 
