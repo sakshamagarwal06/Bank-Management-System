@@ -56,12 +56,16 @@ Just open `main.cpp` and press **F9**
 
 Each account is saved like this:
 ==========================================
-Account Details
-Acc No: 312313
-Name: saksham
-Type: savings
-Balance: 16006
-text
+-Account Details
+
+-Acc No: 312313
+
+-Name: saksham
+
+-Type: savings
+
+-Balance: 16006
+
 
 ## Limits
 
@@ -100,3 +104,4 @@ This is a college project for learning OOP. The code focuses on understanding co
 
 **Date:** November 2025  
 **For:** College OOP Assignment
+
