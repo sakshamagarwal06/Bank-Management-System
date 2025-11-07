@@ -89,6 +89,7 @@ This is a college project for learning OOP. The code focuses on understanding co
 ---
 
 **Date:** November 2025  
-**For:** College OOP Assignment
+**For:** College OOP Project
+
 
 
