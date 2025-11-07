@@ -68,8 +68,7 @@ Each account is saved like this:
 
 
 ## Limits
-
-- Max 10 accounts per run
+
 - Can only add, deposit, withdraw (no edit/delete)
 - Numbers only for account number and amount
 
