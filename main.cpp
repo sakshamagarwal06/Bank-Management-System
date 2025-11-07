@@ -1,149 +1,173 @@
-#include <iostream>
-#include <fstream>
-#include <cstring>
+#include<iostream>
+#include<fstream>
+#include<cstring>
 using namespace std;
 
-class BankAccount {
+class Account {
 private:
-    int accountNo;
-    char holderName[50], type[20];
-    double balance;
+    int accNo;
+    char name[50];
+    char accType[20];
+    double bal;
 public:
-    static int totalAccounts;
-
-    BankAccount() {
-        accountNo = 0;
-        strcpy(holderName, "");
-        strcpy(type, "");
-        balance = 0;
+    static int totalAcc;
+    
+    Account() {
+        accNo = 0;
+        strcpy(name, "");
+        strcpy(accType, "");
+        bal = 0;
     }
-
-    void openAccount() {
+    
+    void addAcc() {
         char temp[100];
-        cout << "Enter Account No: ";
+        cout << "\nEnter Account Number: ";
         cin.getline(temp, 100);
-        accountNo = atoi(temp);
-
-        cout << "Enter Holder Name: ";
-        cin.getline(holderName, 50);
-
-        cout << "Enter Account Type (Savings/Current): ";
-        cin.getline(type, 20);
-
-        cout << "Enter Initial Balance: ";
+        accNo = atoi(temp);
+        
+        cout << "Enter Name: ";
+        cin.getline(name, 50);
+        
+        cout << "Account Type (Savings/Current): ";
+        cin.getline(accType, 20);
+        
+        cout << "Initial Balance: ";
         cin.getline(temp, 100);
-        balance = atof(temp);
-
-        totalAccounts++;
+        bal = atof(temp);
+        
+        totalAcc++;
     }
-
-    void showAccount() {
-        cout << "\n--- Account Details ---\n";
-        cout << "Account No: " << accountNo << "\n";
-        cout << "Name      : " << holderName << "\n";
-        cout << "Type      : " << type << "\n";
-        cout << "Balance   : " << balance << "\n";
-        cout << "-----------------------\n";
+    
+    void display() {
+        cout << "\nAccount Number: " << accNo << endl;
+        cout << "Name: " << name << endl;
+        cout << "Type: " << accType << endl;
+        cout << "Balance: " << bal << endl;
     }
-
-    void deposit() {
+    
+    void putMoney() {
         char temp[100];
-        double amt;
-        cout << "Enter Amount to Deposit: ";
+        double money;
+        
+        cout << "How much to deposit? ";
         cin.getline(temp, 100);
-        amt = atof(temp);
-        if (amt > 0) {
-            balance += amt;
-            cout << amt << " deposited. New balance: " << balance << endl;
+        money = atof(temp);
+        
+        if (money > 0) {
+            bal = bal + money;
+            cout << "Success! New balance: " << bal << endl;
         }
-        else cout << "Invalid amount!\n";
-    }
-
-    void withdraw() {
-        char temp[100];
-        double amt;
-        cout << "Enter Amount to Withdraw: ";
-        cin.getline(temp, 100);
-        amt = atof(temp);
-        if (amt > 0 && balance - amt >= 0) {
-            balance -= amt;
-            cout << amt << " withdrawn. New balance: " << balance << endl;
+        else {
+            cout << "Invalid amount" << endl;
         }
-        else cout << "Insufficient balance or invalid amount!\n";
     }
-
-    // >>>> FORMATTED FILE OUTPUT <<<<
-    void saveToFile() {
-        ofstream fout("accountdata.txt", ios::app);
-        fout << "---------------------------\n";
-        fout << "Account No : " << accountNo << "\n";
-        fout << "Name       : " << holderName << "\n";
-        fout << "Type       : " << type << "\n";
-        fout << "Balance    : " << balance << "\n";
-        fout << "---------------------------\n";
-        fout.close();
+    
+    void getMoney() {
+        char temp[100];
+        double money;
+        
+        cout << "How much to withdraw? ";
+        cin.getline(temp, 100);
+        money = atof(temp);
+        
+        if (money > 0 && bal >= money) {
+            bal = bal - money;
+            cout << "Success! New balance: " << bal << endl;
+        }
+        else {
+            cout << "Not enough balance or invalid" << endl;
+        }
     }
-
-    int getAccountNo() { return accountNo; }
-
-    friend void showFriend(BankAccount &);
-
-    bool operator==(BankAccount &a2) { return accountNo == a2.accountNo; }
+    
+    // Save to file with nice format
+    void saveData() {
+        ofstream file;
+        file.open("accountdata.txt", ios::app);
+        file << "==========================================\n";
+        file << "Account Details\n";
+        file << "==========================================\n";
+        file << "Acc No: " << accNo << "\n";
+        file << "Name: " << name << "\n";
+        file << "Type: " << accType << "\n";
+        file << "Balance: " << bal << "\n";
+        file << "==========================================\n\n";
+        file.close();
+    }
+    
+    int getNo() {
+        return accNo;
+    }
+    
+    friend void printNo(Account &);
+    
+    bool operator==(Account &other) {
+        return accNo == other.accNo;
+    }
 };
 
-int BankAccount::totalAccounts = 0;
+int Account::totalAcc = 0;
 
-void showFriend(BankAccount &acc) {
-    cout << "[Friend] Account No is: " << acc.accountNo << endl;
+void printNo(Account &a) {
+    cout << "[Info] Account No: " << a.accNo << endl;
 }
 
 class Person {
 public:
-    virtual void welcome() { cout << "Bank account registration done!\n"; }
+    virtual void msg() {
+        cout << "Account created!\n";
+    }
 };
 
-class VIPAccount : public Person, public BankAccount {
+class VIPAcc : public Person, public Account {
 public:
-    void welcome() { cout << "VIP Account: Special Welcome from Bank!\n"; }
+    void msg() {
+        cout << "Welcome VIP Customer!\n";
+    }
 };
 
 int main() {
-    BankAccount::totalAccounts = 0;
     char temp[100];
     int n;
-
-    cout << "How many bank accounts to open? ";
+    
+    cout << "How many accounts? ";
     cin.getline(temp, 100);
     n = atoi(temp);
-
-    BankAccount accounts[10];
-
-    for (int i = 0; i < n; ++i) {
-        cout << "\n--- Account #" << (i+1) << " ---\n";
-        accounts[i].openAccount();
-        accounts[i].saveToFile();
-        showFriend(accounts[i]);
-
-        if (i > 0 && accounts[i] == accounts[i-1])
-            cout << "[Warning] Two accounts have same Account No!\n";
-
-        cout << "Want to deposit or withdraw (d/w/skip)? ";
+    
+    Account acc[10];
+    
+    for (int i = 0; i < n; i++) {
+        cout << "\n--- Account " << (i+1) << " ---\n";
+        acc[i].addAcc();
+        acc[i].saveData();
+        printNo(acc[i]);
+        
+        if (i > 0 && acc[i] == acc[i-1]) {
+            cout << "WARNING: Same account number!\n";
+        }
+        
+        cout << "Deposit/Withdraw? (d/w/skip): ";
         cin.getline(temp, 100);
-        if (strcmp(temp, "d") == 0) accounts[i].deposit();
-        else if (strcmp(temp, "w") == 0) accounts[i].withdraw();
+        
+        if (temp[0] == 'd') {
+            acc[i].putMoney();
+        }
+        else if (temp[0] == 'w') {
+            acc[i].getMoney();
+        }
     }
-
-    cout << "\n====== All Accounts Summary ======\n";
-    for (int i = 0; i < n; ++i) {
-        accounts[i].showAccount();
+    
+    cout << "\n=== All Accounts ===\n";
+    for (int i = 0; i < n; i++) {
+        acc[i].display();
     }
-    cout << "Total accounts opened: " << BankAccount::totalAccounts << endl;
-
-    VIPAccount vip;
+    
+    cout << "\nTotal Accounts: " << Account::totalAcc << endl;
+    
+    VIPAcc vip;
     Person *ptr = &vip;
-    ptr->welcome();
-
-    cout << "Press Enter to exit...";
+    ptr->msg();
+    
+    cout << "\nPress Enter to exit...";
     cin.get();
     return 0;
 }
