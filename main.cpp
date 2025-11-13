@@ -140,7 +140,7 @@ int main() {
         acc[i].saveData();
         printNo(acc[i]);
         
-        // CHECK FOR DUPLICATE - NOW FIXED!
+        
         bool isDuplicate = false;
         for (int j = 0; j < i; j++) {
             if (acc[i] == acc[j]) {
